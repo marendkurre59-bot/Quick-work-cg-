@@ -1,0 +1,6 @@
+{
+  "name": "QuickWork CG",
+  "description": "QuickWork CG - Founder & Owner: Narendra Kumar Kurre. On-demand local home services, repairs, and skilled workers marketplace across Chhattisgarh.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

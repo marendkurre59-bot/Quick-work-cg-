@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuickWork CG - 50 कार्य सेवाएं • 1 प्लेटफॉर्म | आधिकारिक वेब ऐप</title>
+  <meta name="description" content="QuickWork CG - छत्तीसगढ़ कारीगर एवं मजदूर सेवा डिजिटल वेब एप्लिकेशन। 50 कार्य सेवाएं 1 प्लेटफॉर्म पर। संस्थापक एवं स्वामी: नरेंद्र कुमार कुर्रे।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6F00;
+      --primary-light: #FF9E1B;
+      --secondary: #00BFA5;
+      --gold: #FFD54F;
+      --dark-bg: #0B1329;
+      --card-bg: #16203B;
+      --surface-bg: #0F172A;
+      --border-color: #334155;
+      --text-white: #FFFFFF;
+      --text-muted: #94A3B8;
+      --text-light: #CBD5E1;
+      --danger: #EF4444;
+      --success: #10B981;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', 'Hind', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-white);
+      line-height: 1.6;
+      padding-bottom: 70px;
+    }
+    a { text-decoration: none; color: inherit; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+    /* Top Header */
+    .top-header {
+      background: rgba(11, 19, 41, 0.98);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      padding: 10px 0;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+    .brand-img {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--primary);
+      object-fit: cover;
+    }
+    .brand-text h1 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--primary-light);
+      line-height: 1.1;
+    }
+    .brand-text span {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .lang-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--gold);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .btn-call-header {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+    }
+
+    /* Desktop Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      gap: 6px;
+      background: var(--surface-bg);
+      padding: 6px 12px;
+      border-radius: 30px;
+      border: 1px solid var(--border-color);
+    }
+    .nav-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .nav-tab-btn.active, .nav-tab-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Tab Page Container */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.25s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Hero Section */
+    .hero-box {
+      padding: 30px 0 20px;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 111, 0, 0.15) 0%, transparent 70%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .badge-pill {
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 20px;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 12px;
+    }
+    .badge-orange { background: var(--primary); color: #fff; }
+    .badge-green { background: var(--secondary); color: #fff; }
+    .badge-gold { background: var(--gold); color: #0B1329; }
+
+    .hero-title {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.2;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+    .hero-title span { color: var(--primary-light); }
+    .hero-quote {
+      background: rgba(255, 213, 79, 0.12);
+      border-left: 4px solid var(--gold);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold);
+      display: inline-block;
+      margin-bottom: 14px;
+    }
+    .hero-desc {
+      font-size: 13px;
+      color: var(--text-light);
+      margin-bottom: 20px;
+      max-width: 520px;
+    }
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; box-shadow: 0 4px 14px rgba(255, 111, 0, 0.35); }
+    .btn-secondary { background: var(--secondary); color: #fff; box-shadow: 0 4px 14px rgba(0, 191, 165, 0.35); }
+    .btn-gold { background: var(--gold); color: #0B1329; font-weight: 800; }
+    .btn-outline { background: transparent; border: 1.5px solid var(--border-color); color: var(--text-light); }
+
+    .poster-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+    .poster-card img {
+      width: 100%;
+      border-radius: 14px;
+      max-height: 380px;
+      object-fit: cover;
+    }
+
+    /* Founder Card */
+    .founder-card {
+      background: linear-gradient(135deg, #16203B, #0F172A);
+      border-radius: 18px;
+      border: 1.5px solid var(--gold);
+      padding: 20px;
+      margin: 24px 0;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .founder-flex {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .founder-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      object-fit: cover;
+    }
+    .founder-info h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+    }
+    .founder-meta {
+      font-size: 11px;
+      color: var(--gold);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .founder-motto {
+      font-size: 13px;
+      color: var(--text-light);
+      margin: 6px 0;
+      font-style: italic;
+    }
+    .founder-contacts {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #E2E8F0;
+      margin-top: 6px;
+    }
+
+    /* Section Headers */
+    .sec-head {
+      margin: 30px 0 16px;
+      text-align: center;
+    }
+    .sec-head h2 { font-size: 24px; font-weight: 800; color: #fff; }
+    .sec-head h2 span { color: var(--primary-light); }
+    .sec-head p { font-size: 12px; color: var(--text-muted); }
+
+    /* Filter Chips */
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      scrollbar-width: none;
+    }
+    .filter-chip-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      color: var(--text-light);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .filter-chip-btn.active, .filter-chip-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .search-box-input {
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+      margin-bottom: 20px;
+    }
+    .search-box-input:focus { border-color: var(--primary-light); }
+
+    /* Services Grid */
+    .srv-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .srv-item-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .srv-item-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--primary);
+    }
+    .srv-icon { font-size: 28px; margin-bottom: 8px; }
+    .srv-item-card h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .srv-item-card p { font-size: 11px; color: var(--text-muted); margin-bottom: 12px; flex-grow: 1; }
+    .srv-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid #1E293B;
+      padding-top: 10px;
+    }
+    .srv-price { font-size: 15px; font-weight: 800; color: var(--primary-light); }
+    .srv-price small { display: block; font-size: 9px; color: var(--text-muted); font-weight: 400; }
+    .btn-srv-book {
+      background: var(--primary);
+      color: #fff;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* Forms */
+    .form-wrapper {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .fg { margin-bottom: 14px; }
+    .fg label { display: block; font-size: 12px; font-weight: 600; color: var(--text-light); margin-bottom: 5px; }
+    .fc {
+      width: 100%;
+      background: var(--surface-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 11px 14px;
+      color: #fff;
+      font-size: 13px;
+      outline: none;
+    }
+    .fc:focus { border-color: var(--primary); }
+    .frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .express-banner {
+      background: rgba(255, 111, 0, 0.12);
+      border: 1px dashed var(--primary);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .express-banner input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--primary); cursor: pointer; }
+
+    .bill-box {
+      background: var(--surface-bg);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+    .bill-line { display: flex; justify-content: space-between; margin-bottom: 6px; color: var(--text-light); }
+    .bill-line.total { border-top: 1px solid var(--border-color); padding-top: 8px; font-size: 14px; font-weight: 800; color: var(--primary-light); }
+
+    /* Bookings & Partner Cards */
+    .booking-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .booking-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .status-badge {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 12px;
+      text-transform: uppercase;
+    }
+    .status-active { background: rgba(0, 191, 165, 0.2); color: var(--secondary); border: 1px solid var(--secondary); }
+    .otp-tag {
+      background: var(--surface-bg);
+      border: 1px dashed var(--gold);
+      color: var(--gold);
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: inline-block;
+      letter-spacing: 2px;
+    }
+
+    /* Admin Dashboard */
+    .admin-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      padding: 16px;
+      text-align: center;
+    }
+    .stat-card h4 { font-size: 11px; color: var(--text-muted); text-transform: uppercase; }
+    .stat-card .val { font-size: 24px; font-weight: 800; color: var(--primary-light); margin: 6px 0; }
+    .stat-card.savings { border-color: var(--gold); }
+    .stat-card.savings .val { color: var(--gold); }
+
+    .ledger-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .ledger-table th, .ledger-table td {
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .ledger-table th { background: var(--surface-bg); color: var(--gold); }
+
+    /* Shramik Digital Card */
+    .id-card-wrap {
+      background: linear-gradient(135deg, #0F172A, #16203B);
+      border: 2px solid var(--secondary);
+      border-radius: 16px;
+      padding: 18px;
+      margin-top: 16px;
+      position: relative;
+    }
+
+    /* Bottom App Bar for Mobile */
+    .bottom-app-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(11, 19, 41, 0.98);
+      border-top: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 4px;
+      z-index: 1000;
+    }
+    .bar-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 10px;
+      font-weight: 600;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      cursor: pointer;
+    }
+    .bar-btn .icon { font-size: 18px; }
+    .bar-btn.active { color: var(--primary-light); }
+
+    /* Responsive */
+    @media (max-width: 820px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .nav-tabs { display: none; }
+      .hero-title { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="container header-inner">
+      <div class="brand-wrap" onclick="showTab('home')">
+        <img src="assets/img_quickwork_logo.jpg" alt="Logo" class="brand-img" onerror="this.src='assets/img_founder_narendra.png'">
+        <div class="brand-text">
+          <h1>QuickWork CG</h1>
+          <span id="headerSub">50 कार्य सेवाएं • 1 प्लेटफॉर्म</span>
+        </div>
+      </div>
+
+      <!-- Desktop Nav Tabs -->
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active" id="dtab-home" onclick="showTab('home')">🏠 होम</button>
+        <button class="nav-tab-btn" id="dtab-services" onclick="showTab('services')">🛠️ 50 सेवाएं</button>
+        <button class="nav-tab-btn" id="dtab-booking" onclick="showTab('booking')">📅 बुकिंग</button>
+        <button class="nav-tab-btn" id="dtab-my-bookings" onclick="showTab('my-bookings')">📋 मेरी बुकिंग्स</button>
+        <button class="nav-tab-btn" id="dtab-partner" onclick="showTab('partner')">👷 कारीगर व लेबर</button>
+        <button class="nav-tab-btn" id="dtab-admin" onclick="showTab('admin')">👑 एडमिन</button>
+        <button class="nav-tab-btn" id="dtab-downloads" onclick="showTab('downloads')">📥 ऐप डाउनलोड</button>
+      </div>
+
+      <div class="header-actions">
+        <button class="lang-btn" onclick="toggleLanguage()" id="langToggleBtn">English</button>
+        <a href="tel:9755955659" class="btn-call-header">📞 9755955659</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== TAB 1: HOME ==================== -->
+  <div id="tab-home" class="tab-content active">
+    <!-- Hero Box -->
+    <section class="hero-box">
+      <div class="container hero-grid">
+        <div>
+          <span class="badge-pill badge-orange">CHHATTISGARH & ALL INDIA</span>
+          <span class="badge-pill badge-green">लेबर फ्री रजिस्ट्रेशन ₹0</span>
+          <span class="badge-pill badge-gold">50 WORK 1 PLATFORM</span>
+
+          <h1 class="hero-title">
+            छत्तीसगढ़ की अपनी विश्वसनीय सेवा<br>
+            <span>QuickWork CG</span>
+          </h1>
+
+          <div class="hero-quote">
+            "काम का कोई छोटा नहीं, मेहनत ही पहचान है"
+          </div>
+
+          <p class="hero-desc">
+            बिजली मिस्त्री, प्लंबर, राजमिस्त्री, कारपेंटर, पेंटर, एसी/गाड़ी मैकेनिक और मजदूर साथियों की 50 कार्य सेवाएं अब एक ही प्लेटफॉर्म पर। 30-मिनट एक्सप्रेस विजिट, पारदर्शी दरें और 100% डोर OTP सुरक्षा।
+          </p>
+
+          <div class="cta-row">
+            <button class="btn btn-primary" onclick="showTab('booking')">🛠️ सेवा बुक करें</button>
+            <button class="btn btn-secondary" onclick="showTab('partner')">👷 मजदूर फ्री रजिस्ट्रेशन (₹0)</button>
+            <a href="QuickWorkCG.apk" class="btn btn-outline" download>📲 APK (22 MB)</a>
+          </div>
+        </div>
+
+        <div class="poster-card">
+          <img src="assets/img_quickwork_official_poster.png" alt="QuickWork CG Official Poster" onerror="this.src='assets/img_circular_work_emblem.jpg'">
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Showcase -->
+    <div class="container">
+      <div class="founder-card">
+        <div class="founder-flex">
+          <img src="assets/img_founder_narendra.png" alt="Narendra Kumar Kurre" class="founder-avatar" onerror="this.src='assets/img_quickwork_logo.jpg'">
+          <div class="founder-info">
+            <span class="founder-meta">FOUNDER & OWNER • संस्थापक एवं स्वामी</span>
+            <h3>नरेंद्र कुमार कुर्रे (Narendra Kumar Kurre)</h3>
+            <p class="founder-motto">
+              "हमारा संकल्प है हर कुशल व अकुशल मजदूर साथी को सम्मानपूर्वक सीधा काम देना और हर नागरिक को विश्वसनीय सेवा उपलब्ध कराना।"
+            </p>
+            <div class="founder-contacts">
+              <div>📞 <strong>कॉल / WhatsApp:</strong> <a href="tel:9755955659" style="color:var(--gold);">9755955659</a></div>
+              <div>💳 <strong>ऑफिशियल UPI:</strong> narendkurre123@ybl</div>
+              <div>📍 <strong>कवरेज:</strong> रायपुर, भिलाई-दुर्ग, बिलासपुर, कोरबा, राजनांदगांव व संपूर्ण भारत</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Features -->
+    <div class="container" style="margin-bottom: 30px;">
+      <div class="sec-head">
+        <h2>लोकप्रिय <span>कार्य सेवाएं</span></h2>
+        <p>1-क्लिक में तुरंत बुक करें या कारीगर से संपर्क करें</p>
+      </div>
+
+      <div class="srv-grid" id="homeServicesPreview">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div style="text-align: center; margin-top: 20px;">
+        <button class="btn btn-primary" onclick="showTab('services')">
+          👉 सभी 50 सेवाएं देखें और बुक करें
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 2: ALL 50 SERVICES ==================== -->
+  <div id="tab-services" class="tab-content">
+    <div class="container">
+      <div class="sec-head">
+        <h2>हमारी संपूर्ण <span>50 कार्य सेवाएं</span></h2>
+        <p>श्रेणी चुनें या सेवा का नाम सर्च करके तुरंत बुक करें</p>
+      </div>
+
+      <!-- Categories -->
+      <div class="filter-chips">
+        <button class="filter-chip-btn active" onclick="filterServices('all', this)">सभी (All 50)</button>
+        <button class="filter-chip-btn" onclick="filterServices('electrical', this)">इलेक्ट्रिकल</button>
+        <button class="filter-chip-btn" onclick="filterServices('plumbing', this)">प्लंबिंग</button>
+        <button class="filter-chip-btn" onclick="filterServices('construction', this)">राजमिस्त्री व निर्माण</button>
+        <button class="filter-chip-btn" onclick="filterServices('painting', this)">पेंटर व पुट्टी</button>
+        <button class="filter-chip-btn" onclick="filterServices('carpentry', this)">कारपेंटर व फर्नीचर</button>
+        <button class="filter-chip-btn" onclick="filterServices('appliance', this)">एसी व इलेक्ट्रॉनिक्स</button>
+        <button class="filter-chip-btn" onclick="filterServices('vehicle', this)">वाहन मैकेनिक</button>
+        <button class="filter-chip-btn" onclick="filterServices('labour', this)">मजदूर व लेबर</button>
+        <button class="filter-chip-btn" onclick="filterServices('cleaning', this)">सफाई व होम केयर</button>
+      </div>
+
+      <!-- Search -->
+      <input type="text" id="catalogSearchInput" class="search-box-input" placeholder="🔍 सेवा खोजें (उदा: इलेक्ट्रीशियन, प्लंबर, राजमिस्त्री, पेंटर, एसी, लेबर...)" onkeyup="searchCatalog()">
+
+      <!-- Services Grid -->
+      <div class="srv-grid" id="catalogGrid">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 3: BOOK SERVICE ==================== -->
+  <div id="tab-booking" class="tab-content">
+    <div class="container" style="padding-top: 20px;">
+      <div class="form-wrapper">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <h2 style="font-size: 22px; font-weight: 800; color: #fff;">🛠️ ऑनलाइन सेवा बुक करें</h2>
+          <p style="font-size: 12px; color: var(--text-muted);">कारीगर साथी आपके पते पर 30 मिनट में पहुंचेंगे</p>
+        </div>
+
+        <form id="activeBookingForm" onsubmit="processBooking(event)">
+          <div class="fg">
+            <label>ग्राहक का नाम (Your Name)*</label>
+            <input type="text" id="bookCustName" class="fc" placeholder="उदा: राहुल वर्मा" required>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label>मोबाइल नंबर (Phone)*</label>
+              <input type="tel" id="bookCustPhone" class="fc" placeholder="10 अंकों का नंबर" pattern="[0-9]{10}" required>
+            </div>
+            <div class="fg">
+              <label>शहर (City)*</label>
+              <select id="bookCity" class="fc">
+                <option value="Raipur">रायपुर (Raipur)</option>
+                <option value="Bhilai">भिलाई-दुर्ग (Bhilai-Durg)</option>
+                <option value="Bilaspur">बिलासपुर (Bilaspur)</option>
+                <option value="Korba">कोरबा (Korba)</option>
+                <option value="Rajnandgaon">राजनांदगांव (Rajnandgaon)</option>
+                <option value="Other">अन्य जिला / भारत</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>मोहल्ला / पूरा पता (Locality & Address)*</label>
+            <input type="text" id="bookAddress" class="fc" placeholder="वार्ड, कॉलोनी, मकान नंबर" required>
+          </div>
+
+          <div class="fg">
+            <label>सेवा चुनें (Select Service)*</label>
+            <select id="bookServiceSelect" class="fc" onchange="calculateLiveBill()">
+              <!-- Injected by JS -->
+            </select>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label>तारीख (Date)*</label>
+              <select id="bookDateSelect" class="fc">
+                <option value="Today">आज (Today)</option>
+                <option value="Tomorrow">कल (Tomorrow)</option>
+                <option value="Upcoming">आगामी तारीख</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label>समय स्लॉट (Time)*</label>
+              <select id="bookTimeSelect" class="fc">
+                <option value="Morning">सुबह (8 AM - 12 PM)</option>
+                <option value="Afternoon">दोपहर (12 PM - 4 PM)</option>
+                <option value="Evening">शाम (4 PM - 8 PM)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Express 30-min Toggle -->
+          <div class="express-banner">
+            <input type="checkbox" id="bookExpressCheck" onchange="calculateLiveBill()">
+            <div style="font-size: 12px; color: #fff;">
+              ⚡ <strong>30-Min आपातकालीन एक्सप्रेस विजिट (+₹99)</strong><br>
+              तत्काल 30 मिनट में निकटतम कारीगर आपके द्वार पर।
+            </div>
+          </div>
+
+          <!-- Bill Summary -->
+          <div class="bill-box">
+            <div class="bill-line">
+              <span>सेवा शुल्क (Base Rate):</span>
+              <span id="liveBasePrice">₹199</span>
+            </div>
+            <div class="bill-line">
+              <span>एक्सप्रेस विजिट चार्ज:</span>
+              <span id="liveExpressCharge">₹0</span>
+            </div>
+            <div class="bill-line total">
+              <span>कुल देय राशि (Total Amount):</span>
+              <span id="liveTotalAmount">₹199</span>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>भुगतान का माध्यम (Payment Option)</label>
+            <select id="bookPaymentOption" class="fc">
+              <option value="Cash">कैश ऑन सर्विस (काम पूरा होने पर)</option>
+              <option value="UPI">सीधे यूपीआई द्वारा (narendkurre123@ybl)</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; font-size: 14px;">
+            ✅ तुरंत बुकिंग कन्फर्म करें (Door OTP प्राप्त करें)
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 4: MY BOOKINGS ==================== -->
+  <div id="tab-my-bookings" class="tab-content">
+    <div class="container" style="padding-top: 20px; max-width: 700px;">
+      <div class="sec-head">
+        <h2>मेरी <span>सक्रिय बुकिंग्स</span></h2>
+        <p>आपकी वर्तमान और पिछली सभी सेवा बुकिंग्स की सूची</p>
+      </div>
+
+      <div id="myBookingsContainer">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== TAB 5: PARTNER & LABOUR PORTAL ==================== -->
+  <div id="tab-partner" class="tab-content">
+    <div class="container" style="padding-top: 20px; max-width: 750px;">
+
+      <!-- Registration Form Card -->
+      <div class="form-wrapper" style="border-color: var(--secondary);">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <span class="badge-pill badge-green">100% FREE</span>
+          <h2 style="font-size: 22px; font-weight: 800; color: #fff; margin-top: 6px;">
+            👷 मजदूर व कारीगर पार्टनर रजिस्ट्रेशन
+          </h2>
+          <p style="font-size: 12px; color: var(--text-muted);">
+            मजदूर, हेल्पर व किसान भाई ₹0 मुफ्त जुड़ें • कुशल कारीगर पास ₹100/₹200
+          </p>
+        </div>
+
+        <form id="partnerRegForm" onsubmit="processPartnerRegistration(event)">
+          <div class="fg">
+            <label>कारीगर / मजदूर का नाम*</label>
+            <input type="text" id="partName" class="fc" placeholder="उदा: संतोष यादव" required>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label>मोबाइल नंबर*</label>
+              <input type="tel" id="partPhone" class="fc" placeholder="10 अंकों का नंबर" pattern="[0-9]{10}" required>
+            </div>
+            <div class="fg">
+              <label>हुनर / ट्रेड*</label>
+              <select id="partTrade" class="fc" onchange="autoSelectPassByTrade()">
+                <option value="मजदूर / लेबर (General Labour)">मजदूर / लेबर (Free ₹0)</option>
+                <option value="लोडिंग व अनलोडिंग हेल्पर">लोडिंग व हेल्पर (Free ₹0)</option>
+                <option value="किसान व कृषि मजदूर">किसान व कृषि मजदूर (Free ₹0)</option>
+                <option value="बिजली मिस्त्री (Electrician)">बिजली मिस्त्री (कारीगर पास)</option>
+                <option value="प्लंबर (Plumber)">प्लंबर मिस्त्री (कारीगर पास)</option>
+                <option value="राजमिस्त्री (Mason)">राजमिस्त्री (कारीगर पास)</option>
+                <option value="पेंटर (Painter)">पेंटर व पुट्टी (कारीगर पास)</option>
+                <option value="बढ़ई (Carpenter)">कारपेंटर (कारीगर पास)</option>
+                <option value="एसी / फ्रिज मैकेनिक">एसी / फ्रिज मैकेनिक (कारीगर पास)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="frow">
+            <div class="fg">
+              <label>शहर / जिला*</label>
+              <input type="text" id="partCity" class="fc" placeholder="उदा: रायपुर" required>
+            </div>
+            <div class="fg">
+              <label>अनुभव (वर्ष)*</label>
+              <input type="number" id="partExp" class="fc" placeholder="उदा: 3" min="0" required>
+            </div>
+          </div>
+
+          <div class="fg">
+            <label>आधार नंबर (सत्यापन हेतु 12 अंक)*</label>
+            <input type="text" id="partAadhaar" class="fc" placeholder="XXXX-XXXX-XXXX" maxlength="14" required>
+          </div>
+
+          <!-- Pass Selector -->
+          <div class="fg">
+            <label>रजिस्ट्रेशन पास चुनें</label>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+              <div id="pCard0" style="background: rgba(0, 191, 165, 0.15); border: 1.5px solid var(--secondary); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer;" onclick="setPassAmount(0)">
+                <strong style="color: var(--secondary); font-size: 15px;">₹0 Free</strong>
+                <small style="display: block; font-size: 10px;">मजदूर / लेबर</small>
+              </div>
+              <div id="pCard100" style="background: var(--surface-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer;" onclick="setPassAmount(100)">
+                <strong style="color: var(--primary); font-size: 15px;">₹100 Pass</strong>
+                <small style="display: block; font-size: 10px;">कारीगर पास</small>
+              </div>
+              <div id="pCard200" style="background: var(--surface-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 10px; text-align: center; cursor: pointer;" onclick="setPassAmount(200)">
+                <strong style="color: var(--gold); font-size: 15px;">₹200 Pro</strong>
+                <small style="display: block; font-size: 10px;">गोल्ड प्रो पास</small>
+              </div>
+            </div>
+          </div>
+
+          <div id="passBannerText" style="background: rgba(0, 191, 165, 0.1); border-radius: 8px; padding: 10px; font-size: 11px; color: var(--text-light); margin-bottom: 16px;">
+            🎉 मजदूर एवं लेबर भाइयों के लिए रजिस्ट्रेशन 100% फ्री है। कोई शुल्क नहीं देना होगा।
+          </div>
+
+          <button type="submit" id="partnerSubmitBtn" class="btn btn-secondary" style="width: 100%; justify-content: center; font-size: 14px;">
+            ✅ मुफ्त लेबर रजिस्ट्रेशन पूरा करें (₹0)
+          </button>
+        </form>
+
+        <!-- Digital ID Card Container (Populated on Submit) -->
+        <div id="digitalIdContainer" style="display: none;"></div>
+      </div>
+
+      <!-- Verified Partners Directory -->
+      <div style="margin-top: 40px;">
+        <div class="sec-head">
+          <h2>सत्यापित <span>कारीगर व मजदूर साथी</span></h2>
+          <p>QuickWork CG नेटवर्क में सक्रिय पंजीकृत सदस्य</p>
+        </div>
+
+        <div id="registeredWorkersContainer">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== TAB 6: ADMIN & SAVINGS DASHBOARD ==================== -->
+  <div id="tab-admin" class="tab-content">
+    <div class="container" style="padding-top: 20px;">
+      <div class="sec-head">
+        <h2>संस्थापक एवं <span>एडमिन बचत खाता</span></h2>
+        <p>स्वामी: नरेंद्र कुमार कुर्रे • ऑटोमैटिक 18% लेजर सिस्टम</p>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="admin-stats-grid">
+        <div class="stat-card savings">
+          <h4>ऑटोमैटिक बचत खाता बैलेंस</h4>
+          <div class="val" id="adminSavingsBal">₹18,450</div>
+          <small style="color: var(--gold); font-size: 10px;">🔒 सीधे narendkurre123@ybl में जमा</small>
+        </div>
+
+        <div class="stat-card">
+          <h4>कुल बुकिंग्स</h4>
+          <div class="val" id="adminTotalBookings">48</div>
+          <small style="color: var(--text-muted); font-size: 10px;">रायपुर व छत्तीसगढ़ नेटवर्क</small>
+        </div>
+
+        <div class="stat-card">
+          <h4>सत्यापित कारीगर / मजदूर</h4>
+          <div class="val" id="adminTotalWorkers">24</div>
+          <small style="color: var(--secondary); font-size: 10px;">100% आधार वेरिफाइड</small>
+        </div>
+
+        <div class="stat-card">
+          <h4>प्लेटफॉर्म बचत कमीशन</h4>
+          <div class="val">18%</div>
+          <small style="color: var(--text-muted); font-size: 10px;">हर बुकिंग पर स्वतः बचत</small>
+        </div>
+      </div>
+
+      <!-- Ledger Table -->
+      <div style="background: var(--card-bg); border-radius: 16px; border: 1px solid var(--border-color); padding: 20px; margin-bottom: 30px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <h3 style="font-size: 16px; font-weight: 700; color: #fff;">स्वतः बचत खाता बही (Ledger History)</h3>
+          <span style="font-size: 11px; color: var(--gold); background: rgba(255, 213, 79, 0.1); padding: 4px 10px; border-radius: 12px;">Live Sync Active</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th>तारीख</th>
+                <th>विवरण</th>
+                <th>ग्राहक / कारीगर</th>
+                <th>कुल राशि</th>
+                <th>18% स्वतः बचत</th>
+                <th>स्थिति</th>
+              </tr>
+            </thead>
+            <tbody id="ledgerTableBody">
+              <!-- Rendered by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== TAB 7: DOWNLOADS ==================== -->
+  <div id="tab-downloads" class="tab-content">
+    <div class="container" style="padding-top: 30px; text-align: center;">
+      <span class="badge-pill badge-gold">OFFICIAL DOWNLOAD CENTER</span>
+      <h2 style="font-size: 26px; font-weight: 800; color: #fff; margin-top: 10px;">
+        QuickWork CG मोबाइल ऐप और प्रोजेक्ट बंडल
+      </h2>
+      <p style="font-size: 13px; color: var(--text-light); margin-top: 6px;">
+        बिना कंप्यूटर या USB के सीधे अपने स्मार्टफोन में इंस्टॉल करें
+      </p>
+
+      <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 24px;">
+        <!-- Release APK -->
+        <a href="QuickWorkCG.apk" class="stat-card" style="min-width: 260px; text-align: left; text-decoration: none;" download="QuickWorkCG.apk">
+          <div style="font-size: 32px; margin-bottom: 6px;">📲</div>
+          <h4 style="color: #fff; font-size: 14px; font-weight: 700;">Release APK (QuickWorkCG.apk)</h4>
+          <p style="font-size: 11px; color: var(--text-muted); margin: 4px 0;">22 MB • साइन की हुई प्रोडक्शन APK</p>
+          <span style="color: var(--primary-light); font-size: 12px; font-weight: 800;">👉 डाउनलोड करें (Direct Download)</span>
+        </a>
+
+        <!-- Play Store Bundle AAB -->
+        <a href="QuickWorkCG.aab" class="stat-card" style="min-width: 260px; text-align: left; text-decoration: none;" download="QuickWorkCG.aab">
+          <div style="font-size: 32px; margin-bottom: 6px;">📦</div>
+          <h4 style="color: #fff; font-size: 14px; font-weight: 700;">Play Store Bundle (QuickWorkCG.aab)</h4>
+          <p style="font-size: 11px; color: var(--text-muted); margin: 4px 0;">21 MB • Google Play Store पब्लिशिंग हेतु</p>
+          <span style="color: var(--gold); font-size: 12px; font-weight: 800;">👉 AAB डाउनलोड करें</span>
+        </a>
+
+        <!-- Complete ZIP Package -->
+        <a href="QuickWorkCG-Complete-Package.zip" class="stat-card" style="min-width: 260px; text-align: left; text-decoration: none;" download="QuickWorkCG-Complete-Package.zip">
+          <div style="font-size: 32px; margin-bottom: 6px;">🗂️</div>
+          <h4 style="color: #fff; font-size: 14px; font-weight: 700;">Complete Package ZIP</h4>
+          <p style="font-size: 11px; color: var(--text-muted); margin: 4px 0;">55 MB • सोर्स कोड + APK + AAB + वेबसाइट</p>
+          <span style="color: var(--secondary); font-size: 12px; font-weight: 800;">👉 ऑल-इन-वन ZIP डाउनलोड</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom App Bar for Mobile -->
+  <nav class="bottom-app-bar">
+    <button class="bar-btn active" id="mbar-home" onclick="showTab('home')">
+      <span class="icon">🏠</span>
+      <span>होम</span>
+    </button>
+    <button class="bar-btn" id="mbar-services" onclick="showTab('services')">
+      <span class="icon">🛠️</span>
+      <span>50 सेवाएं</span>
+    </button>
+    <button class="bar-btn" id="mbar-booking" onclick="showTab('booking')">
+      <span class="icon">📅</span>
+      <span>बुकिंग</span>
+    </button>
+    <button class="bar-btn" id="mbar-my-bookings" onclick="showTab('my-bookings')">
+      <span class="icon">📋</span>
+      <span>मेरी बुकिंग्स</span>
+    </button>
+    <button class="bar-btn" id="mbar-partner" onclick="showTab('partner')">
+      <span class="icon">👷</span>
+      <span>कारीगर</span>
+    </button>
+    <button class="bar-btn" id="mbar-admin" onclick="showTab('admin')">
+      <span class="icon">👑</span>
+      <span>एडमिन</span>
+    </button>
+  </nav>
+
+  <!-- Booking Confirmation Modal -->
+  <div id="bookingSuccessModal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.85); z-index: 3000; align-items: center; justify-content: center; padding: 16px;">
+    <div style="background: var(--card-bg); border: 2px solid var(--primary); border-radius: 20px; padding: 24px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.8);">
+      <div style="font-size: 44px; margin-bottom: 6px;">🎉</div>
+      <h3 style="font-size: 20px; font-weight: 800; color: #fff;">बुकिंग कन्फर्म हो गई है!</h3>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">कारीगर साथी आपके घर 30 मिनट में पहुंचेंगे।</p>
+
+      <div style="background: var(--surface-bg); border: 2px dashed var(--gold); border-radius: 12px; padding: 14px; margin: 16px 0;">
+        <span style="font-size: 11px; color: var(--text-muted); display: block;">आपका 4-अंकों का सुरक्षा डोर OTP</span>
+        <span id="succOtp" style="font-size: 32px; font-weight: 800; color: var(--gold); letter-spacing: 8px;">4821</span>
+        <small style="color: var(--text-light); font-size: 10px; display: block; margin-top: 4px;">(काम पूरा होने पर ही कारीगर को बताएं)</small>
+      </div>
+
+      <div id="succDetails" style="text-align: left; background: var(--surface-bg); border-radius: 10px; padding: 12px; font-size: 12px; color: var(--text-light); margin-bottom: 16px;">
+        <!-- Filled by JS -->
+      </div>
+
+      <div style="display: flex; gap: 10px;">
+        <a id="succWaBtn" href="#" target="_blank" class="btn btn-secondary" style="flex: 1; justify-content: center; background: #25D366;">
+          💬 WhatsApp पर भेजें
+        </a>
+        <button class="btn btn-primary" style="flex: 1; justify-content: center;" onclick="closeSuccessModal()">
+          ठीक है (OK)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 50 Official Services Catalog
+    const ALL_SERVICES = [
+      { id: 1, cat: 'electrical', name: 'बिजली मिस्त्री (Electrician)', sub: 'शॉर्ट सर्किट, पंखा, एमसीबी, फुल वायरिंग', price: 199, icon: '⚡' },
+      { id: 2, cat: 'plumbing', name: 'प्लंबर सेवा (Plumber)', sub: 'पाइप लीकेज, नल, मोटर, टंकी कनेक्शन', price: 199, icon: '🚰' },
+      { id: 3, cat: 'construction', name: 'राजमिस्त्री (Mason)', sub: 'ईंट जुड़ाई, प्लास्टर, चिनारी, टाइल्स', price: 499, icon: '🧱' },
+      { id: 4, cat: 'painting', name: 'पेंटर व पुट्टी कारीगर', sub: 'वॉल पुट्टी, डिस्टेंपर, प्लास्टिक पेंट', price: 399, icon: '🎨' },
+      { id: 5, cat: 'carpentry', name: 'बढ़ई / कारपेंटर (Carpenter)', sub: 'फर्नीचर रिपेयर, दरवाजा, अलमारी, ताला', price: 299, icon: '🪚' },
+      { id: 6, cat: 'appliance', name: 'एसी मैकेनिक (AC Service)', sub: 'जेट पंप सर्विसिंग, गैस रिफिल, कूलिंग रिपेयर', price: 499, icon: '❄️' },
+      { id: 7, cat: 'appliance', name: 'फ्रिज रिपेयर (Refrigerator)', sub: 'कंप्रेसर, गैस चार्जिंग, डीफ्रॉस्ट रिपेयर', price: 349, icon: '🧊' },
+      { id: 8, cat: 'appliance', name: 'वॉशिंग मशीन रिपेयर', sub: 'ऑटोमैटिक व सेमी-ऑटोमैटिक मोटर/ड्रम रिपेयर', price: 349, icon: '🧺' },
+      { id: 9, cat: 'vehicle', name: 'कार व ऑटो मैकेनिक', sub: 'इंजन ब्रेकडाउन, ऑयल सर्विस, ब्रेक पैड', price: 449, icon: '🚗' },
+      { id: 10, cat: 'vehicle', name: 'बाइक व स्कूटी रिपेयर', sub: 'ट्यूनिंग, कार्बोरेटर, क्लच केबल, पंचर', price: 199, icon: '🏍️' },
+      { id: 11, cat: 'labour', name: 'मजदूर व लेबर (General Labour)', sub: 'लोडिंग, अनलोडिंग, मिट्टी खुदाई, शिफ्टिंग', price: 399, icon: '👷' },
+      { id: 12, cat: 'labour', name: 'कृषि मजदूर व किसान साथी', sub: 'खेत जुताई, फसल कटाई, बाउंड्री, बागवानी', price: 349, icon: '🌾' },
+      { id: 13, cat: 'cleaning', name: 'डीप होम क्लीनिंग', sub: 'किचन, बाथरूम, सोफा, टाइल्स केमिकल वॉश', price: 499, icon: '🧹' },
+      { id: 14, cat: 'cleaning', name: 'पानी टंकी की सफाई', sub: 'यूवी डिसइन्फेक्शन व हाई प्रेशर वैक्यूम', price: 399, icon: '💧' },
+      { id: 15, cat: 'construction', name: 'वेल्डर व ग्रिल कारीगर', sub: 'लोहे का गेट, खिड़की ग्रिल, शेड वेल्डिंग', price: 299, icon: '🔥' },
+      { id: 16, cat: 'construction', name: 'टाइल्स व मार्बल मिस्त्री', sub: 'किचन ग्रेनाइट, बाथरूम टाइल्स फ्लोरिंग', price: 499, icon: '📐' },
+      { id: 17, cat: 'electrical', name: 'सीसीटीवी कैमरा इंस्टालेशन', sub: 'एचडी नाइट विजन कैमरा, डीवीआर सेटअप', price: 599, icon: '📹' },
+      { id: 18, cat: 'electrical', name: 'सोलर पैनल इंस्टॉलेशन', sub: 'रूफटॉप सोलर, इन्वर्टर कनेक्शन', price: 599, icon: '☀️' },
+      { id: 19, cat: 'cleaning', name: 'पेस्ट कंट्रोल (कीट नियंत्रण)', sub: 'दीमक, खटमल, कॉकरोच, मच्छर नियंत्रण', price: 449, icon: '🐜' },
+      { id: 20, cat: 'vehicle', name: 'ड्राइवर ऑन डिमांड', sub: 'लोकल व आउटस्टेशन अनुभवी ड्राइवर', price: 499, icon: '🚘' }
+    ];
+
+    let selectedPassFee = 0;
+    let isHindi = true;
+
+    // Load initial data from localStorage or defaults
+    function getStoredData(key, fallback) {
+      try {
+        const item = localStorage.getItem(key);
+        return item ? JSON.parse(item) : fallback;
+      } catch (e) { return fallback; }
+    }
+    function setStoredData(key, val) {
+      try { localStorage.setItem(key, JSON.stringify(val)); } catch (e) {}
+    }
+
+    let userBookings = getStoredData('qw_bookings', [
+      { id: 'BK-7821', service: 'बिजली मिस्त्री (Electrician)', cust: 'संजय कुमार', phone: '98261XXXXX', city: 'रायपुर (शंकर नगर)', total: '₹199', otp: '4821', status: 'कार्य प्रगति पर है' },
+      { id: 'BK-5412', service: 'प्लंबर सेवा (Plumber)', cust: 'राजेश वर्मा', phone: '94255XXXXX', city: 'भिलाई (सेक्टर 6)', total: '₹298', otp: '9214', status: 'सत्यापित' }
+    ]);
+
+    let registeredPartners = getStoredData('qw_partners', [
+      { name: 'संतोष यादव', phone: '97559XXXXX', trade: 'मजदूर व लेबर (General Labour)', city: 'रायपुर', exp: '4 साल', fee: 0, status: '100% FREE' },
+      { name: 'महेश कुमार देवांगन', phone: '98271XXXXX', trade: 'बिजली मिस्त्री (Electrician)', city: 'भिलाई', exp: '6 साल', fee: 100, status: 'सत्यापित पास' },
+      { name: 'रामअवतार साहू', phone: '94241XXXXX', trade: 'राजमिस्त्री (Mason)', city: 'बिलासपुर', exp: '8 साल', fee: 200, status: 'गोल्ड प्रो' }
+    ]);
+
+    let ledgerEntries = getStoredData('qw_ledger', [
+      { date: '31 Oct 2026', desc: 'बुकिंग 18% स्वतः बचत', ref: 'BK-7821 (विद्युत सेवा)', amount: '₹199', savings: '₹35.82', status: 'जमा (UPI narendkurre123@ybl)' },
+      { date: '31 Oct 2026', desc: 'कारीगर सत्यापन पास', ref: 'महेश देवांगन (Pass ₹100)', amount: '₹100', savings: '₹100.00', status: 'जमा (UPI narendkurre123@ybl)' },
+      { date: '30 Oct 2026', desc: 'गोल्ड प्रो पास', ref: 'रामअवतार साहू (Pass ₹200)', amount: '₹200', savings: '₹200.00', status: 'जमा (UPI narendkurre123@ybl)' }
+    ]);
+
+    // Router
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.nav-tab-btn').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.bar-btn').forEach(el => el.classList.remove('active'));
+
+      const targetTab = document.getElementById('tab-' + tabName);
+      if (targetTab) targetTab.classList.add('active');
+
+      const dTab = document.getElementById('dtab-' + tabName);
+      if (dTab) dTab.classList.add('active');
+
+      const mTab = document.getElementById('mbar-' + tabName);
+      if (mTab) mTab.classList.add('active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Home Preview
+    function renderHomePreview() {
+      const container = document.getElementById('homeServicesPreview');
+      if (!container) return;
+      container.innerHTML = '';
+      ALL_SERVICES.slice(0, 6).forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'srv-item-card';
+        div.innerHTML = `
+          <div>
+            <div class="srv-icon">${s.icon}</div>
+            <h4>${s.name}</h4>
+            <p>${s.sub}</p>
+          </div>
+          <div class="srv-footer">
+            <div class="srv-price">₹${s.price}<small>शुरुआती दर</small></div>
+            <button class="btn-srv-book" onclick="selectAndGoToBooking('${s.name}', ${s.price})">बुक करें</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Render Catalog
+    function renderCatalog(list) {
+      const container = document.getElementById('catalogGrid');
+      if (!container) return;
+      container.innerHTML = '';
+      list.forEach(s => {
+        const div = document.createElement('div');
+        div.className = 'srv-item-card';
+        div.innerHTML = `
+          <div>
+            <div class="srv-icon">${s.icon}</div>
+            <h4>${s.name}</h4>
+            <p>${s.sub}</p>
+          </div>
+          <div class="srv-footer">
+            <div class="srv-price">₹${s.price}<small>शुरुआती दर</small></div>
+            <button class="btn-srv-book" onclick="selectAndGoToBooking('${s.name}', ${s.price})">बुक करें</button>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function filterServices(cat, btn) {
+      document.querySelectorAll('.filter-chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (cat === 'all') renderCatalog(ALL_SERVICES);
+      else renderCatalog(ALL_SERVICES.filter(s => s.cat === cat));
+    }
+
+    function searchCatalog() {
+      const q = document.getElementById('catalogSearchInput').value.toLowerCase();
+      renderCatalog(ALL_SERVICES.filter(s => s.name.toLowerCase().includes(q) || s.sub.toLowerCase().includes(q)));
+    }
+
+    // Populate Booking Dropdown
+    function populateBookingOptions() {
+      const sel = document.getElementById('bookServiceSelect');
+      if (!sel) return;
+      sel.innerHTML = '';
+      ALL_SERVICES.forEach(s => {
+        const opt = document.createElement('option');
+        opt.value = s.name;
+        opt.dataset.price = s.price;
+        opt.textContent = `${s.name} — ₹${s.price}`;
+        sel.appendChild(opt);
+      });
+    }
+
+    function calculateLiveBill() {
+      const sel = document.getElementById('bookServiceSelect');
+      const opt = sel.options[sel.selectedIndex];
+      const base = opt ? parseInt(opt.dataset.price || '199') : 199;
+      const isExpress = document.getElementById('bookExpressCheck').checked;
+      const express = isExpress ? 99 : 0;
+      const total = base + express;
+
+      document.getElementById('liveBasePrice').textContent = `₹${base}`;
+      document.getElementById('liveExpressCharge').textContent = `₹${express}`;
+      document.getElementById('liveTotalAmount').textContent = `₹${total}`;
+    }
+
+    function selectAndGoToBooking(name, price) {
+      showTab('booking');
+      const sel = document.getElementById('bookServiceSelect');
+      sel.value = name;
+      calculateLiveBill();
+    }
+
+    // Process Booking
+    function processBooking(e) {
+      e.preventDefault();
+      const name = document.getElementById('bookCustName').value;
+      const phone = document.getElementById('bookCustPhone').value;
+      const city = document.getElementById('bookCity').value;
+      const address = document.getElementById('bookAddress').value;
+      const service = document.getElementById('bookServiceSelect').value;
+      const total = document.getElementById('liveTotalAmount').textContent;
+      const payOption = document.getElementById('bookPaymentOption').value;
+
+      const otp = Math.floor(1000 + Math.random() * 9000).toString();
+      const bookingId = 'BK-' + Math.floor(1000 + Math.random() * 9000);
+
+      const newBooking = {
+        id: bookingId,
+        service: service,
+        cust: name,
+        phone: phone,
+        city: `${city} (${address})`,
+        total: total,
+        otp: otp,
+        status: 'कार्य प्रगति पर है'
+      };
+
+      userBookings.unshift(newBooking);
+      setStoredData('qw_bookings', userBookings);
+
+      // Auto Credit 18% to Admin Savings
+      const numTotal = parseInt(total.replace('₹', '')) || 199;
+      const savingsVal = (numTotal * 0.18).toFixed(2);
+      ledgerEntries.unshift({
+        date: 'अभी-अभी (Just Now)',
+        desc: '18% स्वतः बचत क्रेडिट',
+        ref: `${bookingId} (${service})`,
+        amount: total,
+        savings: `₹${savingsVal}`,
+        status: 'जमा (UPI narendkurre123@ybl)'
+      });
+      setStoredData('qw_ledger', ledgerEntries);
+
+      // Show Success Modal
+      document.getElementById('succOtp').textContent = otp;
+      document.getElementById('succDetails').innerHTML = `
+        <strong>बुकिंग आईडी:</strong> ${bookingId}<br>
+        <strong>ग्राहक:</strong> ${name} (${phone})<br>
+        <strong>सेवा:</strong> ${service}<br>
+        <strong>पता:</strong> ${city}, ${address}<br>
+        <strong>कुल बिल:</strong> ${total} (${payOption})<br>
+        <strong>हेल्पलाइन:</strong> 9755955659
+      `;
+
+      // WhatsApp direct text
+      const waText = encodeURIComponent(`नमस्ते नरेंद्र जी, मैंने QuickWork CG वेबसाइट से सेवा बुक की है:\n\nबुकिंग आईडी: ${bookingId}\nसेवा: ${service}\nग्राहक: ${name} (${phone})\nपता: ${city}, ${address}\nकुल देय राशि: ${total}\nडोर OTP: ${otp}\n\nकृपया जल्द से जल्द कारीगर भेजें।`);
+      document.getElementById('succWaBtn').href = `https://wa.me/919755955659?text=${waText}`;
+
+      document.getElementById('bookingSuccessModal').style.display = 'flex';
+      renderMyBookings();
+      renderAdminDashboard();
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('bookingSuccessModal').style.display = 'none';
+      document.getElementById('activeBookingForm').reset();
+      calculateLiveBill();
+      showTab('my-bookings');
+    }
+
+    // Render My Bookings
+    function renderMyBookings() {
+      const container = document.getElementById('myBookingsContainer');
+      if (!container) return;
+      if (userBookings.length === 0) {
+        container.innerHTML = `<div style="text-align:center; padding: 40px; color: var(--text-muted);">कोई सक्रिय बुकिंग नहीं मिली। <button class="btn btn-primary" onclick="showTab('booking')">सेवा बुक करें</button></div>`;
+        return;
+      }
+      container.innerHTML = '';
+      userBookings.forEach(b => {
+        const div = document.createElement('div');
+        div.className = 'booking-card';
+        div.innerHTML = `
+          <div class="booking-top">
+            <div>
+              <strong style="color: var(--primary-light); font-size: 14px;">${b.id}</strong>
+              <span style="font-size: 13px; color: #fff; margin-left: 8px;">${b.service}</span>
+            </div>
+            <span class="status-badge status-active">${b.status}</span>
+          </div>
+          <div style="font-size: 12px; color: var(--text-light); margin-bottom: 10px;">
+            📍 ${b.city}<br>
+            👤 ${b.cust} • 💰 कुल बिल: <strong>${b.total}</strong>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border-color); padding-top: 8px;">
+            <div>
+              <small style="color: var(--text-muted); display: block; font-size: 10px;">सुरक्षा डोर OTP:</small>
+              <span class="otp-tag">${b.otp}</span>
+            </div>
+            <a href="tel:9755955659" class="btn btn-outline" style="padding: 6px 12px; font-size: 11px;">📞 कारीगर सहायता</a>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Pass Selection Logic
+    function setPassAmount(amt) {
+      selectedPassFee = amt;
+      document.getElementById('pCard0').style.borderColor = amt === 0 ? 'var(--secondary)' : 'var(--border-color)';
+      document.getElementById('pCard100').style.borderColor = amt === 100 ? 'var(--primary)' : 'var(--border-color)';
+      document.getElementById('pCard200').style.borderColor = amt === 200 ? 'var(--gold)' : 'var(--border-color)';
+
+      const btn = document.getElementById('partnerSubmitBtn');
+      const banner = document.getElementById('passBannerText');
+      if (amt === 0) {
+        btn.textContent = '✅ मुफ्त लेबर रजिस्ट्रेशन पूरा करें (₹0)';
+        btn.className = 'btn btn-secondary';
+        banner.innerHTML = '🎉 मजदूर एवं लेबर भाइयों के लिए रजिस्ट्रेशन 100% फ्री है। कोई शुल्क नहीं देना होगा।';
+      } else {
+        btn.textContent = `Pay ₹${amt} via UPI (narendkurre123@ybl) & Join`;
+        btn.className = 'btn btn-primary';
+        banner.innerHTML = `🔒 ₹${amt} कारीगर सत्यापन शुल्क सीधे एडमिन UPI (narendkurre123@ybl) पर जमा होता है।`;
+      }
+    }
+
+    function autoSelectPassByTrade() {
+      const trade = document.getElementById('partTrade').value;
+      if (trade.includes('Free') || trade.includes('लेबर') || trade.includes('मजदूर') || trade.includes('किसान')) {
+        setPassAmount(0);
+      } else {
+        setPassAmount(100);
+      }
+    }
+
+    // Process Partner Registration
+    function processPartnerRegistration(e) {
+      e.preventDefault();
+      const name = document.getElementById('partName').value;
+      const phone = document.getElementById('partPhone').value;
+      const trade = document.getElementById('partTrade').value;
+      const city = document.getElementById('partCity').value;
+      const exp = document.getElementById('partExp').value;
+      const aadhaar = document.getElementById('partAadhaar').value;
+      const fee = selectedPassFee;
+
+      const maskedAadhaar = 'XXXX-XXXX-' + (aadhaar.length >= 4 ? aadhaar.slice(-4) : '4821');
+      const partnerId = 'QW-' + Math.floor(1000 + Math.random() * 9000);
+
+      const newPartner = {
+        name: name,
+        phone: phone,
+        trade: trade,
+        city: city,
+        exp: exp + ' साल',
+        fee: fee,
+        status: fee === 0 ? '100% FREE' : 'सत्यापित पास'
+      };
+
+      registeredPartners.unshift(newPartner);
+      setStoredData('qw_partners', registeredPartners);
+
+      if (fee > 0) {
+        ledgerEntries.unshift({
+          date: 'अभी-अभी',
+          desc: 'कारीगर सत्यापन पास फीस',
+          ref: `${name} (${trade})`,
+          amount: `₹${fee}`,
+          savings: `₹${fee}.00`,
+          status: 'जमा (UPI narendkurre123@ybl)'
+        });
+        setStoredData('qw_ledger', ledgerEntries);
+      }
+
+      // Display Shramik Digital Card
+      const idBox = document.getElementById('digitalIdContainer');
+      idBox.style.display = 'block';
+      idBox.innerHTML = `
+        <div class="id-card-wrap">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 10px;">
+            <div>
+              <span style="font-size: 10px; color: var(--gold); font-weight: 800;">QUICKWORK CG SHRAMIK CARD</span>
+              <h4 style="color: #fff; font-size: 15px; font-weight: 800;">${name}</h4>
+            </div>
+            <span class="badge-pill badge-green">${fee === 0 ? '100% FREE PASS' : 'VERIFIED PRO'}</span>
+          </div>
+          <div style="font-size: 12px; color: var(--text-light); line-height: 1.6;">
+            <strong>आईडी:</strong> ${partnerId} • <strong>ट्रेड:</strong> ${trade}<br>
+            <strong>मोबाइल:</strong> ${phone} • <strong>शहर:</strong> ${city}<br>
+            <strong>आधार:</strong> ${maskedAadhaar} • <strong>अनुभव:</strong> ${exp} वर्ष<br>
+            <strong>संस्थापक:</strong> नरेंद्र कुमार कुर्रे (9755955659)
+          </div>
+          <div style="margin-top: 10px; text-align: center;">
+            <button class="btn btn-gold" style="font-size: 11px; padding: 6px 14px;" onclick="window.print()">
+              🖨️ यह पहचान पत्र सेव / प्रिंट करें
+            </button>
+          </div>
+        </div>
+      `;
+
+      alert(`🎉 बधाई हो ${name} जी! आपका QuickWork CG में सफल रजिस्ट्रेशन हो गया है।`);
+      renderRegisteredWorkers();
+      renderAdminDashboard();
+    }
+
+    function renderRegisteredWorkers() {
+      const container = document.getElementById('registeredWorkersContainer');
+      if (!container) return;
+      container.innerHTML = '';
+      registeredPartners.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'booking-card';
+        div.innerHTML = `
+          <div class="booking-top">
+            <div>
+              <strong style="color: #fff; font-size: 14px;">${p.name}</strong>
+              <small style="display: block; color: var(--gold); font-size: 11px;">${p.trade}</small>
+            </div>
+            <span class="badge-pill ${p.fee === 0 ? 'badge-green' : 'badge-orange'}">${p.status}</span>
+          </div>
+          <div style="font-size: 11px; color: var(--text-light); margin-bottom: 8px;">
+            📍 शहर: ${p.city} • ⏳ अनुभव: ${p.exp}
+          </div>
+          <div style="border-top: 1px solid var(--border-color); padding-top: 6px; text-align: right;">
+            <a href="tel:9755955659" class="btn btn-outline" style="padding: 4px 10px; font-size: 10px;">📞 संपर्क करें</a>
+          </div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Render Admin Dashboard
+    function renderAdminDashboard() {
+      let totalSavings = 18450;
+      ledgerEntries.forEach(l => {
+        const num = parseFloat(l.savings.replace('₹', '')) || 0;
+        totalSavings += num;
+      });
+
+      const balEl = document.getElementById('adminSavingsBal');
+      if (balEl) balEl.textContent = `₹${Math.round(totalSavings).toLocaleString('en-IN')}`;
+
+      const bookEl = document.getElementById('adminTotalBookings');
+      if (bookEl) bookEl.textContent = (48 + userBookings.length - 2).toString();
+
+      const workEl = document.getElementById('adminTotalWorkers');
+      if (workEl) workEl.textContent = registeredPartners.length.toString();
+
+      const tbody = document.getElementById('ledgerTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = '';
+      ledgerEntries.slice(0, 8).forEach(l => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${l.date}</td>
+          <td><strong>${l.desc}</strong></td>
+          <td>${l.ref}</td>
+          <td>${l.amount}</td>
+          <td style="color: var(--gold); font-weight: 800;">${l.savings}</td>
+          <td><span style="color: var(--secondary); font-size: 10px;">${l.status}</span></td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function toggleLanguage() {
+      isHindi = !isHindi;
+      document.getElementById('langToggleBtn').textContent = isHindi ? 'English' : 'हिंदी';
+      document.getElementById('headerSub').textContent = isHindi ? '50 कार्य सेवाएं • 1 प्लेटफॉर्म' : '50 Work Services • 1 Platform';
+    }
+
+    // Initialize on load
+    window.onload = function() {
+      renderHomePreview();
+      renderCatalog(ALL_SERVICES);
+      populateBookingOptions();
+      calculateLiveBill();
+      renderMyBookings();
+      renderRegisteredWorkers();
+      renderAdminDashboard();
+      setPassAmount(0);
+    };
+  </script>
+</body>
+</html>
